@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="screen active" id="quiz-screen">
+
+        <div class="quiz-header">
+          <h2 id="question-text">Question Goes Here.</h2>
+
+          <div class="quiz-info">
+            <p>
+              Question <span id="current-question">1</span> of
+              <span id="total-questions">5</span>
+            </p>
+            <p>Score: <span id="score">0</span></p>
+          </div>
+
+        </div>
+
+        <div id="answers-container" class="answers-container">
+          <!-- Answers will go here, using js code -->
+        </div>
+        <div class="progress-bar">
+          <div id="progress" class="progress"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
