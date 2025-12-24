@@ -67,7 +67,7 @@ function setupStartPage() {
   const startButton = document.getElementById('start-btn');
   if (startButton) {
     startButton.addEventListener('click', () => {
-      window.location.href = 'quizscreen.html';
+      window.location.href = 'pages/quizscreen.html';
     });
   }
 }
@@ -135,6 +135,7 @@ function selectAnswer(event) {
     }
   }, 1000);
 }
+
 function showResults() {
   const finalScoreSpan = document.getElementById('final-score');
   const maxScoreSpan = document.getElementById('max-score');
@@ -167,5 +168,5 @@ function showResults() {
 }
 
 function restartQuiz() {
-  window.location.href = 'index.html';
+  window.location.href = '../index.html';
 }

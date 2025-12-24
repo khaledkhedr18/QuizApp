@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #f5efe6;
+  --color-surface: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --color-text: #333333;
+  --color-text-muted: #666666;
+  --color-primary: #e86a33;
+  --color-primary-hover: #d45b28;
+  --color-on-primary: #ffffff;
+  --color-accent-light: #f8f0e5;
+  --color-accent-border: #eadbc8;
+  --color-accent-border-hover: #dac0ae;
+  --color-success: #28a745;
+  --color-success-bg: #e6fff0;
+  --color-success-border: #a3f0c4;
+  --color-error: #dc3545;
+  --color-error-bg: #fff0f0;
+  --color-error-border: #ffbdbd;
+}
