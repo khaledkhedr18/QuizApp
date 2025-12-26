@@ -10,14 +10,79 @@ body {
   font-family: sans-serif;
 }
 
+.main-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+}
+
 .container {
   background-color: var(--color-surface);
   border-radius: 1rem;
   box-shadow: 0 10px 30px var(--shadow-color);
+  width: 720px;
   width: 100%;
   max-width: 600px;
   overflow: hidden;
   position: relative;
+}
+
+.flag-container {
+  background-color: var(--color-surface);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem;
+  text-align: left;
+  color: var(--color-text);
+}
+
+.flag-container h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.flagged-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Individual Flagged Item */
+.flagged-item {
+  background-color: var(--color-accent-light);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-accent-border);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+.flagged-item:hover {
+  transform: translateX(5px);
+  background-color: var(--color-accent-border);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 8px 15px;
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+.secondary-btn.active-flag {
+  background-color: #f1c40f;
+  border-color: #f39c12;
+  color: white;
 }
 
 button {
@@ -82,21 +147,68 @@ button:hover {
   transition: all 0.3s ease;
 }
 
+.answer-btn.selected {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary-hover);
+}
+
+.nav-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  flex: 1;
+  font-size: 1.1rem;
+  padding: 10px;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #bdc3c7;
+}
+
+.nav-btn:hover {
+  background-color: #bdc3c7;
+}
+
+.submit-btn {
+  background-color: #27ae60;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #2ecc71;
+}
+
+.submit-btn:disabled {
+  background-color: #95a5a6; /* Gray color */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.submit-btn:disabled:hover {
+  background-color: #95a5a6;
+}
+
 .answer-btn:hover {
   background-color: var(--color-accent-border);
   border-color: var(--color-accent-border-hover);
 }
 
-.answer-btn.correct {
-  background-color: var(--color-success-bg);
-  border-color: var(--color-success-border);
-  color: var(--color-success);
+.timer-container {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-accent-light);
+  overflow: hidden;
 }
 
-.answer-btn.incorrect {
-  background-color: var(--color-error-bg);
-  border-color: var(--color-error-border);
-  color: var(--color-error);
+.timer-bar {
+  height: 100%;
+  width: 100%; /* Starts at 100% */
+  background-color: var(--color-primary);
+  transition: width 1s linear, background-color 0.5s ease;
 }
 
 .progress-bar {
@@ -113,7 +225,6 @@ button:hover {
   width: 0%;
   transition: width 0.3s ease;
 }
-
 
 @media (max-width: 500px) {
   .screen {

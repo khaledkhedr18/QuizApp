@@ -46,9 +46,19 @@ const quizQuestions = [
   },
 ];
 
+let state = {
+  currentIndex: 0,
+  userAnswers: new Array(quizQuestions.length).fill(null),
+  flaggedIndices: [],
+  timeLeft: 60,
+};
+
+const STORAGE_KEY = 'quiz_session_data';
+
+let timerInterval;
 let currentQuestionIndex = 0;
 let score = 0;
-let answersDisabled = false;
+let flaggedQuestions = new Set();
 
 document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
@@ -57,11 +67,67 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'index.html' || page === '') {
     setupStartPage();
   } else if (page === 'quizscreen.html') {
-    startQuiz();
+    loadSession();
+    initQuizUI();
+    showQuestion();
+    updateFlaggedList();
+    startTimer();
   } else if (page === 'resultscreen.html') {
     showResults();
   }
+  const flagBtn = document.getElementById('flag-btn');
+  if (flagBtn) {
+    flagBtn.addEventListener('click', toggleFlag);
+  }
 });
+
+function saveSession() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function loadSession() {
+  const savedState = localStorage.getItem(STORAGE_KEY);
+  if (savedState) {
+    state = JSON.parse(savedState);
+  }
+}
+
+function initQuizUI() {
+  document.getElementById('total-questions').textContent = quizQuestions.length;
+
+  document.getElementById('flag-btn').addEventListener('click', toggleFlag);
+  document
+    .getElementById('prev-btn')
+    .addEventListener('click', () => navigate(-1));
+  document
+    .getElementById('next-btn')
+    .addEventListener('click', () => navigate(1));
+  document.getElementById('submit-btn').addEventListener('click', finishExam);
+}
+
+function startTimer() {
+  const timerBar = document.getElementById('timer-bar');
+  if (!timerBar) return;
+
+  if (timerInterval) clearInterval(timerInterval);
+
+  timerInterval = setInterval(() => {
+    state.timeLeft--;
+    saveSession();
+
+    const timePercent = (state.timeLeft / 60) * 100;
+    timerBar.style.width = timePercent + '%';
+
+    const hue = (state.timeLeft / 60) * 120;
+    timerBar.style.backgroundColor = `hsl(${hue}, 70%, 50%)`;
+
+    if (state.timeLeft <= 0) {
+      clearInterval(timerInterval);
+      alert("Time's up! Submitting your exam.");
+      finishExam();
+    }
+  }, 1000);
+}
 
 function setupStartPage() {
   const startButton = document.getElementById('start-btn');
@@ -86,54 +152,105 @@ function showQuestion() {
   const answersContainer = document.getElementById('answers-container');
   const currentQuestionSpan = document.getElementById('current-question');
   const progressBar = document.getElementById('progress');
+  const flagBtn = document.getElementById('flag-btn');
+  const submitBtn = document.getElementById('submit-btn');
 
   if (!questionText || !answersContainer) return;
 
-  answersDisabled = false;
-  const currentQuestion = quizQuestions[currentQuestionIndex];
-  const progressPercent = (currentQuestionIndex / quizQuestions.length) * 100;
+  const currentQuestion = quizQuestions[state.currentIndex];
+  const progressPercent = (state.currentIndex / quizQuestions.length) * 100;
 
-  currentQuestionSpan.textContent = currentQuestionIndex + 1;
+  currentQuestionSpan.textContent = state.currentIndex + 1;
   progressBar.style.width = progressPercent + '%';
   questionText.textContent = currentQuestion.question;
 
+  if (state.flaggedIndices.includes(state.currentIndex)) {
+    flagBtn.classList.add('active-flag');
+    flagBtn.textContent = 'Unflag';
+  } else {
+    flagBtn.classList.remove('active-flag');
+    flagBtn.textContent = 'Flag';
+  }
+
   answersContainer.innerHTML = '';
-  currentQuestion.answers.forEach((answer) => {
+  currentQuestion.answers.forEach((answer, index) => {
     const button = document.createElement('button');
     button.textContent = answer.text;
     button.classList.add('answer-btn');
-    button.dataset.correct = answer.correct;
-    button.addEventListener('click', selectAnswer);
+
+    if (state.userAnswers[state.currentIndex] === index) {
+      button.classList.add('selected');
+    }
+
+    button.addEventListener('click', () => selectAnswer(index));
     answersContainer.appendChild(button);
   });
+
+  document.getElementById('prev-btn').style.visibility =
+    state.currentIndex === 0 ? 'hidden' : 'visible';
+
+  if (state.currentIndex === quizQuestions.length - 1) {
+    document.getElementById('next-btn').style.display = 'none';
+    submitBtn.style.display = 'block';
+
+    const allAnswered = state.userAnswers.every((answer) => answer !== null);
+    submitBtn.disabled = !allAnswered;
+  } else {
+    document.getElementById('next-btn').style.display = 'block';
+    submitBtn.style.display = 'none';
+  }
 }
 
-function selectAnswer(event) {
-  if (answersDisabled) {
+function toggleFlag() {
+  const idx = state.currentIndex;
+  if (state.flaggedIndices.includes(idx)) {
+    state.flaggedIndices = state.flaggedIndices.filter((i) => i !== idx);
+  } else {
+    state.flaggedIndices.push(idx);
+  }
+  saveSession();
+  updateFlaggedList();
+  showQuestion();
+}
+
+function updateFlaggedList() {
+  const listContainer = document.getElementById('flagged-list');
+  if (!listContainer) return;
+
+  listContainer.innerHTML = '';
+
+  if (state.flaggedIndices.length === 0) {
+    listContainer.innerHTML =
+      '<p id="empty-flag-msg">No questions flagged.</p>';
     return;
   }
 
-  answersDisabled = true;
-  const selectedButton = event.target;
-  const isCorrect = selectedButton.dataset.correct === 'true';
-  const scoreSpan = document.getElementById('score');
+  state.flaggedIndices
+    .sort((a, b) => a - b)
+    .forEach((index) => {
+      const item = document.createElement('div');
+      item.classList.add('flagged-item');
+      item.textContent = `Q${index + 1}: ${quizQuestions[
+        index
+      ].question.substring(0, 20)}...`;
+      item.onclick = () => {
+        state.currentIndex = index;
+        showQuestion();
+      };
+      listContainer.appendChild(item);
+    });
+}
 
-  if (isCorrect) {
-    selectedButton.classList.add('correct');
-    score++;
-    scoreSpan.textContent = score;
-  } else {
-    selectedButton.classList.add('incorrect');
-  }
-  setTimeout(() => {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizQuestions.length) {
-      showQuestion();
-    } else {
-      localStorage.setItem('mostRecentScore', score);
-      window.location.href = 'resultscreen.html';
-    }
-  }, 1000);
+function selectAnswer(answerIndex) {
+  state.userAnswers[state.currentIndex] = answerIndex;
+  saveSession();
+  showQuestion();
+}
+
+function navigate(direction) {
+  state.currentIndex += direction;
+  saveSession();
+  showQuestion();
 }
 
 function showResults() {
@@ -169,4 +286,22 @@ function showResults() {
 
 function restartQuiz() {
   window.location.href = '../index.html';
+}
+
+function finishExam() {
+  if (timerInterval) clearInterval(timerInterval);
+
+  let finalScore = 0;
+  state.userAnswers.forEach((selectedIdx, qIdx) => {
+    if (
+      selectedIdx !== null &&
+      quizQuestions[qIdx].answers[selectedIdx].correct
+    ) {
+      finalScore++;
+    }
+  });
+
+  localStorage.setItem('mostRecentScore', finalScore);
+  localStorage.removeItem(STORAGE_KEY);
+  window.location.href = 'resultscreen.html';
 }
