@@ -164,7 +164,7 @@ function showQuestion() {
   progressBar.style.width = progressPercent + '%';
   questionText.textContent = currentQuestion.question;
 
-  if (flaggedQuestions.has(state.currentIndex)) {
+  if (state.flaggedIndices.includes(state.currentIndex)) {
     flagBtn.classList.add('active-flag');
     flagBtn.textContent = 'Unflag';
   } else {
