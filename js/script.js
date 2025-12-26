@@ -50,10 +50,12 @@ let state = {
   currentIndex: 0,
   userAnswers: new Array(quizQuestions.length).fill(null),
   flaggedIndices: [],
+  timeLeft: 60,
 };
 
 const STORAGE_KEY = 'quiz_session_data';
 
+let timerInterval;
 let currentQuestionIndex = 0;
 let score = 0;
 let flaggedQuestions = new Set();
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initQuizUI();
     showQuestion();
     updateFlaggedList();
+    startTimer();
   } else if (page === 'resultscreen.html') {
     showResults();
   }
@@ -100,6 +103,30 @@ function initQuizUI() {
     .getElementById('next-btn')
     .addEventListener('click', () => navigate(1));
   document.getElementById('submit-btn').addEventListener('click', finishExam);
+}
+
+function startTimer() {
+  const timerBar = document.getElementById('timer-bar');
+  if (!timerBar) return;
+
+  if (timerInterval) clearInterval(timerInterval);
+
+  timerInterval = setInterval(() => {
+    state.timeLeft--;
+    saveSession();
+
+    const timePercent = (state.timeLeft / 60) * 100;
+    timerBar.style.width = timePercent + '%';
+
+    const hue = (state.timeLeft / 60) * 120;
+    timerBar.style.backgroundColor = `hsl(${hue}, 70%, 50%)`;
+
+    if (state.timeLeft <= 0) {
+      clearInterval(timerInterval);
+      alert("Time's up! Submitting your exam.");
+      finishExam();
+    }
+  }, 1000);
 }
 
 function setupStartPage() {
@@ -262,6 +289,8 @@ function restartQuiz() {
 }
 
 function finishExam() {
+  if (timerInterval) clearInterval(timerInterval);
+
   let finalScore = 0;
   state.userAnswers.forEach((selectedIdx, qIdx) => {
     if (
