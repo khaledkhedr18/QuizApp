@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Home</title>
-    <link rel="stylesheet" href="css/style.css"/>
-  </head>
-  <body>
-    
-    <div class="container"> Home
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet">
+    <title>Home | Quizzet</title>
+    <link rel="icon" type="image/png" href="assets/logoTab.png">
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="dashboard-card">
+        <div class="content-section">
+            <div class="branding">
+                <h1>QUIZZET</h1>
+                <p>Smart Learning Platform</p>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-exam" onclick="startExam()">Start Exam</button>
+                <button class="btn btn-results" onclick="viewResults()">View Results</button>
+            </div>
+
+            <div class="fun-footer">
+                <p>If a chick can use a tablet, you can pass this exam! 🐤</p>
+            </div>
+        </div>
+
+        <div class="image-section">
+            <div class="mascot-bubble">
+                <img src="assets/chick.png" alt="Quizzet Mascot" class="mascot">
+            </div>
+        </div>
     </div>
-    <script src="js/script.js"></script>
-  </body>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
 </html>
