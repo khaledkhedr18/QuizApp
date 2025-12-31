@@ -1,61 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const user = localStorage.getItem('currentUser');
 
-    const user = localStorage.getItem("currentUser");
+  const menuItems = document.querySelectorAll('.item');
+  const loginBtn = document.querySelector('.item.button:not(.secondary) a');
+  const signupBtn = document.querySelector('.item.button.secondary a');
+  const toggleBtn = document.querySelector('.toggle');
+  const logo = document.querySelector('.logo');
 
-    const menuItems = document.querySelectorAll(".item");
-    const loginBtn = document.querySelector(".item.button:not(.secondary) a");
-    const signupBtn = document.querySelector(".item.button.secondary a");
-    const toggleBtn = document.querySelector(".toggle");
-    const logo = document.querySelector(".logo");
-
-
-    toggleBtn.addEventListener("click", () => {
-        menuItems.forEach(item => {
-            item.classList.toggle("active");
-        });
+  toggleBtn.addEventListener('click', () => {
+    menuItems.forEach((item) => {
+      item.classList.toggle('active');
     });
+  });
 
-
-    if (user) {
-
-        logo.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.location.href = "../pages/home.html";
-        });
-        if (loginBtn) {
-            loginBtn.innerText = "Logout";
-            loginBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                localStorage.removeItem("currentUser");
-                window.location.href = "../index.html";
-            });
-        }
-
-
-        if (signupBtn) {
-            signupBtn.parentElement.style.display = "none";
-        }
-    } else {
-
-        if (loginBtn) {
-            loginBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                window.location.href = "../pages/login.html";
-            });
-        }
-
-        if (signupBtn) {
-            signupBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                window.location.href = "../pages/register.html";
-            });
-        }
+  if (user) {
+    logo.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '../pages/home.html';
+    });
+    if (loginBtn) {
+      loginBtn.innerText = 'Logout';
+      loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('currentUser');
+        window.location.href = '../index.html';
+      });
     }
 
+    if (signupBtn) {
+      signupBtn.parentElement.style.display = 'none';
+    }
+  } else {
+    if (loginBtn) {
+      loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '../pages/login.html';
+      });
+    }
 
-    document.querySelectorAll(".item a").forEach(link => {
-        link.addEventListener("click", () => {
-            menuItems.forEach(item => item.classList.remove("active"));
-        });
+    if (signupBtn) {
+      signupBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '../pages/register.html';
+      });
+    }
+  }
+
+  document.querySelectorAll('.item a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuItems.forEach((item) => item.classList.remove('active'));
     });
+  });
 });

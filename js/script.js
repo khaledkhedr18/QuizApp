@@ -1,3 +1,22 @@
+(function () {
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const path = window.location.pathname;
+  const page = path.split('/').pop();
+
+  // List of pages that REQUIRE a login
+  const protectedPages = [
+    'startscreen.html',
+    'quizscreen.html',
+    'resultscreen.html',
+  ];
+
+  if (protectedPages.includes(page) && !user) {
+    alert('Access Denied! Please login first. 🔒');
+    // Adjust path if your login.html is in a different folder
+    window.location.href = 'login.html';
+  }
+})();
+
 const quizQuestions = [
   {
     question: 'What is the capital of France?',
@@ -285,7 +304,7 @@ function showResults() {
 }
 
 function restartQuiz() {
-  window.location.href = '../index.html';
+  window.location.href = './home.html';
 }
 
 function finishExam() {
