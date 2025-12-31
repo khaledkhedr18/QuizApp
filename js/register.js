@@ -13,7 +13,7 @@ form.addEventListener("submit", function (e) {
 
         const isUserNameValid = checkLength(username, 4, 15);
         const isEmailValid = checkEmail(email);
-        const isPasswordValid = checkLength(password, 6, 25);
+        const isPasswordValid = checkPassword(password);
         const isPasswordsMatch = checkPasswordsMatch(password, confirmPassword);
 
         isFormValid = isUserNameValid && isEmailValid && isPasswordValid && isPasswordsMatch;
@@ -33,11 +33,11 @@ form.addEventListener("submit", function (e) {
         } else {
             users.push(userData);
             localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem("currentUser", JSON.stringify(userData))
 
             alert("Registration Successful!");
-y
             setTimeout(() => {
-                window.location.href = "/pages/login.html";
+                window.location.href = "../index.html";
             }, 1000);
 
             form.reset();
@@ -89,6 +89,22 @@ function checkEmail(input) {
     }
 }
 
+function checkPassword(input) {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
+    if (passwordRegex.test(input.value.trim())) {
+        showSuccess(input);
+        return true;
+    } else {
+        if (input.value.trim() === "") {
+            showError(input, `Password is required`);
+            return false;
+        }
+
+        showError(input, "Password must be at least 8 characters, including letters and numbers");
+        return false;
+    }
+}
+
 function checkPasswordsMatch(input1, input2) {
     if (input1.value.trim() === "") {
         return false; 
@@ -135,7 +151,7 @@ inputList.forEach(input => {
                 checkEmail(email);
             } 
             else if (input.id === 'password') {
-                checkLength(password, 6, 25);
+                checkPassword(password);
             } 
             else if (input.id === 'confirm-password') {
                 checkPasswordsMatch(password, confirmPassword);

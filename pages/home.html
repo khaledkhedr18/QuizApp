@@ -5,19 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Quizzet</title>
-    <link rel="icon" type="image/png" href="assets/logoTab.png">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" type="image/png" href="../assets/logoTab.png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/home.css">
 
 </head>
 
 <body>
-      <nav id="navbar">
+    <nav id="navbar">
         <ul class="menu">
-            <li class="logo"><a href="#">Quizzet</a></li>
-            <li class="item"><a href="#">Home</a></li>
+            <li class="logo"><a href="./home.html">Quizzet</a></li>
             <li class="item"><a href="#">Dashboard</a></li>
-            </li>
             <li class="item button"><a href="#">Log In</a></li>
             <li class="item button secondary"><a href="#">Sign Up</a></li>
             <li class="toggle"><span class="bars"></span></li>
@@ -31,7 +29,7 @@
             </div>
 
             <div class="button-group">
-                <button class="btn btn-exam" onclick="startExam()">Start Exam</button>
+                <button class="btn btn-exam" onclick="getStart()">Get Started</button>
             </div>
 
             <div class="fun-footer">
@@ -41,12 +39,13 @@
 
         <div class="image-section">
             <div class="mascot-bubble">
-                <img src="assets/chick.png" alt="Quizzet Mascot" class="mascot">
+                <img src="../assets/chick.png" alt="Quizzet Mascot" class="mascot">
             </div>
         </div>
     </div>
-    <script src="js/navbar.js"></script>
-    <script src="js/index.js"></script>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/home.js"></script>
 </body>
 
 </html>

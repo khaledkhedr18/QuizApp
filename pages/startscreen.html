@@ -7,9 +7,20 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>Quiz Game</title>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/style.css"/>
   </head>
   <body>
+     <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="./home.html">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            </li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
     <div class="container">
       <div class="screen active" id="start-screen">
         <h1>Quiz Time!</h1>
@@ -17,6 +28,7 @@
         <button id="start-btn">Start Quiz!</button>
       </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/script.js"></script>
   </body>
 </html>
