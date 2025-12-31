@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
   const page = path.split('/').pop();
 
-  if (page === 'index.html' || page === '') {
+  if (page === 'index.html' || page === '' || page === 'startscreen.html') {
     setupStartPage();
   } else if (page === 'quizscreen.html') {
     loadSession();
@@ -133,7 +133,7 @@ function setupStartPage() {
   const startButton = document.getElementById('start-btn');
   if (startButton) {
     startButton.addEventListener('click', () => {
-      window.location.href = 'pages/quizscreen.html';
+      window.location.href = 'quizscreen.html';
     });
   }
 }
