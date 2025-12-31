@@ -10,7 +10,13 @@ body {
     padding: 20px;
     color: var(--color-text);
 }
-
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
 .container {
     background-color: var(--color-surface); 
     border-radius: 20px; 

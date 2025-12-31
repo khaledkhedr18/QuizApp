@@ -1,53 +1,40 @@
-<nav class="bg-white border-b border-[#eadbc8] px-6 py-3 sticky top-0 z-50 rounded-3xl shadow-sm">
-    <div class="max-w-[1440px] mx-auto flex items-center justify-between">
-
-        <div class="flex items-center gap-2 min-w-[150px]">
-            <img src="../assets/logoTab.png" class="w-9 h-9" alt="Logo" />
-            <span class="text-[#e86a33] text-2xl font-black tracking-tight">Quizzet</span>
-        </div>
-
-        <div class="hidden md:flex items-center gap-12">
-            <a href="../index.html"
-                class="group relative text-gray-500 hover:text-[#e86a33] font-semibold text-lg transition-colors pb-1">
-                Home
-                <span
-                    class="absolute bottom-0 left-0 w-0 h-[3px] bg-[#e86a33] transition-all duration-300 group-hover:w-full"></span>
-            </a>
-
-            <a href="#"
-                class="group relative text-gray-500 hover:text-[#e86a33] font-semibold text-lg transition-colors pb-1">
-                Dashboard
-                <span
-                    class="absolute bottom-0 left-0 w-0 h-[3px] bg-[#e86a33] transition-all duration-300 group-hover:w-full"></span>
-            </a>
-        </div>
-
-        <!-- Buttons section -->
-        <div class="flex flex-row items-center gap-2 min-w-[150px]
-            [@media(max-width:500px)]:flex-col [@media(max-width:500px)]:items-end [@media(max-width:500px)]:gap-1">
-            <button id="loginBtn"
-                class="bg-[#e86a33] text-white px-4 py-1.5 text-sm md:px-8 md:py-2.5 rounded-full font-bold 
-               [@media(max-width:500px)]:w-full [ @media(min-width:501px)_and_(@media(max-width:768px)) ]:w-36 hover:bg-[#d15a2a] transition-all shadow-sm">
-                Login
-            </button>
-            <button id="signupBtn"
-                class="bg-white text-gray-700 border border-gray-200 px-4 py-1.5 text-sm md:px-8 md:py-2.5 rounded-full font-bold 
-               [@media(max-width:500px)]:w-full [ @media(min-width:501px)_and_(@media(max-width:768px)) ]:w-36 hover:bg-[#d15a2a] hover:text-white transition-all shadow-sm">
-                Sign Up
-            </button>
-        </div>
-
-        <!-- Mobile menu button -->
-        <div class="md:hidden [@media(max-width:500px)]:p-1">
-            <button class="text-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8 [@media(max-width:500px)]:h-6 [@media(max-width:500px)]:w-6" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-
-
-    </div>
-</nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+    crossorigin="anonymous"></script>
+    <script>
+    $(function() {
+    $(".toggle").on("click", function() {
+        if ($(".item").hasClass("active")) {
+            $(".item").removeClass("active");
+        } else {
+            $(".item").addClass("active");
+        }
+    });
+});
+    </script>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li class="logo"><a href="./home.html">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            </li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+    <main>
+        <a href="https://youtube.com/c/FollowAndrew" style="position:fixed;bottom:0;color:teal;display:block;text-align:center;font-size:1em">https://youtube.com/c/FollowAndrew</a>
+    </main>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>

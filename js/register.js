@@ -33,6 +33,7 @@ form.addEventListener("submit", function (e) {
         } else {
             users.push(userData);
             localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem("currentUser", JSON.stringify(userData))
 
             alert("Registration Successful!");
             setTimeout(() => {

@@ -5,37 +5,37 @@ const password = document.getElementById("password");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    // 1. Check if fields are empty
     const isRequiredValid = checkRequired([email, password]);
+    if (!isRequiredValid) return;
+
+    // 2. Check if email format is valid
     const isEmailValid = checkEmail(email);
+    if (!isEmailValid) return;
 
-    if (isRequiredValid && isEmailValid) {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+    // 3. Database Check
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const userWithThisEmail = users.find(u => u.email === email.value.trim());
 
-        const foundUser = users.find(user => 
-            user.email === email.value.trim() && user.password === password.value
-        );
+    if (!userWithThisEmail) {
+        showError(email, "Email doesn't exist.");
+        password.value = "";
+        password.parentElement.className = "form-group";
+    } else if (userWithThisEmail.password !== password.value) {
 
-        if (foundUser) {
-            
-            localStorage.setItem('currentUser', JSON.stringify(foundUser));
-            
-            alert(`Welcome back, ${foundUser.username}!`);
-            
-            window.location.href = "../index.html"; 
-        } else {
-            showError(email, "Invalid email or password");
-            showError(password, "Invalid email or password");
-        }
+        showError(password, "Wrong password.");
+    } else {
+        localStorage.setItem("currentUser", JSON.stringify(userWithThisEmail));
+        window.location.href = "../index.html";
     }
 });
 function checkRequired(inputArray) {
     let isValid = true;
     inputArray.forEach(input => {
+        input.parentElement.className = "form-group";
         if (input.value.trim() === "") {
             showError(input, `${formatFieldName(input)} is required`);
             isValid = false;
-        } else {
-            showSuccess(input);
         }
     });
     return isValid;
@@ -44,10 +44,9 @@ function checkRequired(inputArray) {
 function checkEmail(input) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(input.value.trim())) {
-        showSuccess(input);
         return true;
     } else {
-        if(input.value.trim() === "") {
+        if (input.value.trim() === "") {
             showError(input, `Email is required`);
             return false;
         }
@@ -77,13 +76,17 @@ function showSuccess(input) {
     input.addEventListener('blur', () => {
         if (input.value.trim() === "") {
             showError(input, `${formatFieldName(input)} is required`);
-        } 
+        }
         else {
             if (input.id === 'email') {
-                checkEmail(email);
-            }
-            else if (input.id === 'password') {
-                checkLength(password, 6, 25);
+                const isFormatValid = checkEmail(email);
+
+                if (isFormatValid) {
+                    showSuccess(email);
+                }
+                else {
+                    showError(email, "Email is not valid.");
+                }
             }
         }
     });

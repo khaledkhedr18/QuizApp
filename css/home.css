@@ -28,7 +28,7 @@ body {
     box-shadow: 0 20px 40px var(--shadow-color);
     overflow: hidden;
     padding: 30px;
-    gap: 30px;
+    gap: 20px;
 }
 
 .content-section {
@@ -60,6 +60,10 @@ body {
     flex-direction: column;
     gap: 15px;
 }
+.btn-exam {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);  
+}
 
 .btn {
     width: 100%;
@@ -72,21 +76,6 @@ body {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.btn-exam {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);  
-}
-
-.btn-exam:active {
-    box-shadow: 0 0px 0 #b34a1e;
-    transform: translateY(6px);
-}
-
-.btn-results {
-    background-color: var(--color-accent-light);
-    color: var(--color-text);
-    border: 2px solid var(--color-accent-border);
-}
 
 .btn:hover {
     background-color: var(--color-primary);
@@ -110,7 +99,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-     padding: 30px;
+    padding: 30px;
 }
 
 .mascot-bubble {

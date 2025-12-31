@@ -1,31 +1,56 @@
-fetch("../pages/navbar.html")
-    .then(res => res.text())
-    .then(html => {
-        document.getElementById("navbar").innerHTML = html;
+document.addEventListener("DOMContentLoaded", () => {
+  
+    const user = localStorage.getItem("currentUser");
 
-        const loginBtn = document.getElementById("loginBtn");
-        const signupBtn = document.getElementById("signupBtn");
+    const menuItems = document.querySelectorAll(".item");
+    const loginBtn = document.querySelector(".item.button:not(.secondary) a");
+    const signupBtn = document.querySelector(".item.button.secondary a");
+    const toggleBtn = document.querySelector(".toggle");
 
-        if (!loginBtn || !signupBtn) return;
-
-        const toggleButtons = (active, inactive) => {
-            active.classList.add("bg-[#e86a33]", "text-white", "border-none");
-            active.classList.remove("bg-white", "text-gray-700", "border-gray-200");
-
-            inactive.classList.add("bg-white", "text-gray-700", "border", "border-gray-200");
-            inactive.classList.remove("bg-[#e86a33]", "text-white", "border-none");
-        };
-
-        loginBtn.addEventListener("click", () => {
-            toggleButtons(loginBtn, signupBtn);
-            // Navigate to login page
-            window.location.href = "../pages/login.html";
+  
+    toggleBtn.addEventListener("click", () => {
+        menuItems.forEach(item => {
+            item.classList.toggle("active");
         });
+    });
 
-        signupBtn.addEventListener("click", () => {
-            toggleButtons(signupBtn, loginBtn);
-            // Navigate to signup page
-            window.location.href = "../pages/register.html";
+   
+    if (user) {
+       
+        if (loginBtn) {
+            loginBtn.innerText = "Logout";
+            loginBtn.addEventListener("click", (e) => {
+                e.preventDefault(); 
+                localStorage.removeItem("currentUser");
+                window.location.href = "../index.html";
+            });
+        }
+
+        
+        if (signupBtn) {
+            signupBtn.parentElement.style.display = "none";
+        }
+    } else {
+       
+        if (loginBtn) {
+            loginBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = "../pages/login.html";
+            });
+        }
+
+        if (signupBtn) {
+            signupBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = "../pages/register.html";
+            });
+        }
+    }
+
+   
+    document.querySelectorAll(".item a").forEach(link => {
+        link.addEventListener("click", () => {
+            menuItems.forEach(item => item.classList.remove("active"));
         });
-    })
-    .catch(console.error);
+    });
+});
