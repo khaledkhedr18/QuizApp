@@ -18,7 +18,7 @@ form.addEventListener("submit", function (e) {
     const userWithThisEmail = users.find(u => u.email === email.value.trim());
 
     if (!userWithThisEmail) {
-        showError(email, "Email doesn't exist.");
+        showError(email, "Invalid email. Please try again.");
         password.value = "";
         password.parentElement.className = "form-group";
     } else if (userWithThisEmail.password !== password.value) {
@@ -26,7 +26,7 @@ form.addEventListener("submit", function (e) {
         showError(password, "Wrong password.");
     } else {
         localStorage.setItem("currentUser", JSON.stringify(userWithThisEmail));
-        window.location.href = "../index.html";
+        window.location.href = "../pages/home.html";
     }
 });
 function checkRequired(inputArray) {

@@ -15,36 +15,30 @@
       <nav id="navbar">
         <ul class="menu">
             <li class="logo"><a href="#">Quizzet</a></li>
-            <li class="item"><a href="#">Home</a></li>
             <li class="item"><a href="#">Dashboard</a></li>
-            </li>
             <li class="item button"><a href="#">Log In</a></li>
             <li class="item button secondary"><a href="#">Sign Up</a></li>
             <li class="toggle"><span class="bars"></span></li>
         </ul>
     </nav>
-    <div class="dashboard-card">
-        <div class="content-section">
-            <div class="branding">
-                <h1>QUIZZET</h1>
-                <p>Smart Learning Platform</p>
-            </div>
-
-            <div class="button-group">
-                <button class="btn btn-exam" onclick="startExam()">Start Exam</button>
-            </div>
-
-            <div class="fun-footer">
-                <p>If a chick can use a tablet, you can pass this exam! 🐤</p>
-            </div>
+<div class="dashboard-card hero-layout"> 
+    <div class="content-section centered">
+        <div class="badge">Finally, an exam tool that doesn't suck</div>
+        
+        <div class="branding">
+            <h1>The Smartest Way to <br><span class="highlight">Ace Your Finals.</span></h1>
+            <p class="subtitle">Quizzet helps you create, practice, and pass without the 3:00 AM meltdowns. No stress, just results.</p>
         </div>
 
-        <div class="image-section">
-            <div class="mascot-bubble">
-                <img src="assets/chick.png" alt="Quizzet Mascot" class="mascot">
-            </div>
+        <div class="button-group">
+            <button class="btn btn-join" onclick="window.location.href='./pages/register.html'">Join the Genius Club</button>
+        </div>
+
+        <div class="fun-footer">
+            <p>Free forever for students. ✌️</p>
         </div>
     </div>
+</div>
     <script src="js/navbar.js"></script>
     <script src="js/index.js"></script>
 </body>

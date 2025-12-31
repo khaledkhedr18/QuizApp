@@ -37,7 +37,7 @@ form.addEventListener("submit", function (e) {
 
             alert("Registration Successful!");
             setTimeout(() => {
-                window.location.href = "../index.html";
+                window.location.href = "../pages/home.html";
             }, 1000);
 
             form.reset();
