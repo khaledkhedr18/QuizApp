@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
       signupBtn.parentElement.style.display = 'none';
     }
   } else {
+    logo.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '../index.html';
+    });
+
     if (loginBtn) {
       loginBtn.addEventListener('click', (e) => {
         e.preventDefault();
