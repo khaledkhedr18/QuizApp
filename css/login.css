@@ -1,0 +1,133 @@
+@import url('global.css');
+
+body {
+    background-color: var(--color-bg); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--color-text);
+}
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+.container {
+    background-color: var(--color-surface); 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px var(--shadow-color);
+    width: 100%;
+    max-width: 400px;  
+    padding: 2.5rem 1.5rem;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+
+.form-group {
+    margin-bottom: 25px; 
+    position: relative;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-text-muted); 
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+input {
+    border: 2px solid var(--color-accent-border); 
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    padding: 10px 15px; 
+    font-size: 14px;
+    background-color: var(--color-accent-light); 
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--color-primary);
+    background-color: var(--color-surface);
+    outline: none;
+    box-shadow: 0 0 8px rgba(232, 106, 51, 0.1);
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--color-primary); 
+    border: none;
+    color: var(--color-on-primary); 
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 12px;
+    width: 100%;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--color-primary-hover); 
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+.form-group.error input {
+    border-color: var(--color-error); 
+    background-color: var(--color-error-bg); 
+}
+
+
+.form-group.success input {
+    border-color: var(--color-success); 
+    background-color: var(--color-success-bg); 
+}
+
+
+small {
+    visibility: hidden;
+    opacity: 0; 
+    position: absolute;
+    bottom: -18px; 
+    left: 2px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-error);
+    transition: opacity 0.3s ease; 
+}
+
+.form-group.error small {
+    visibility: visible;
+    opacity: 1; 
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        padding: 1.5rem 1.2rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}

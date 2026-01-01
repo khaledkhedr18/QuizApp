@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Results | Quizzet</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/review.css">
+</head>
+<body>
+    <!-- Navbar -->
+     <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="#">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+
+    <!-- Main Review Container -->
+    <div class="review-container">
+        <!-- Header Section -->
+        <div class="review-header">
+            <div class="header-content">
+                <h1>Quiz <span class="highlight">Review</span></h1>
+                <p class="subtitle">Review your answers and learn from your mistakes</p>
+            </div>
+            <button class="back-btn" onclick="window.location.href='dashboard.html'">
+                <span>← Back to Dashboard</span>
+            </button>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="summary-stats">
+            <div class="stat-item">
+                <div class="stat-icon correct-icon">✓</div>
+                <div class="stat-info">
+                    <span class="stat-label">Correct</span>
+                    <span class="stat-value" id="correct-count">0</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon incorrect-icon">✗</div>
+                <div class="stat-info">
+                    <span class="stat-label">Incorrect</span>
+                    <span class="stat-value" id="incorrect-count">0</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon score-icon">%</div>
+                <div class="stat-info">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score-value">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions Review -->
+        <div id="review-content"></div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/review.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account | Quizzet</title>
+    <link rel="icon" type="image/png" href="/assets/logoTab.png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/register.css" class="css">
+</head>
+
+<body>
+     <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="#">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <form id="registerForm">
+            <h1>Register</h1>
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter username">
+                <small></small>
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter email">
+                <small></small>
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter password">
+                <small></small>
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm password">
+                <small></small>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--color-text-muted);">
+                Already have an account? <a href="login.html"
+                    style="color: var(--color-primary); font-weight: bold; text-decoration: none;">Login</a>
+            </p>
+        </form>
+    </div>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+
+</html>

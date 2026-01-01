@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Quizzet</title>
+    <link rel="icon" type="image/png" href="../assets/logoTab.png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/home.css">
+
+</head>
+
+<body>
+    <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="#">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+    <div class="dashboard-card">
+        <div class="content-section">
+            <div class="branding">
+                <h1>QUIZZET</h1>
+                <p>Smart Learning Platform</p>
+                <div class="tagline">
+                    <span class="tagline-highlight">✨</span>
+                    <span>Master any subject with confidence</span>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-mini">
+                <div class="stat-mini-item">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">Active Learners</div>
+                </div>
+                <div class="stat-mini-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Quiz Topics</div>
+                </div>
+                <div class="stat-mini-item">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+
+            <!-- Feature Highlights -->
+            <div class="features">
+                <div class="feature-item">
+                    <span class="feature-icon">📚</span>
+                    <span class="feature-text">Interactive Quizzes</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <span class="feature-text">Track Progress</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏆</span>
+                    <span class="feature-text">Achieve Goals</span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-exam" onclick="getStart()">
+                    <span>Get Started</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+
+            <div class="fun-footer">
+                <p>If a chick can use a tablet, you can pass this exam!</p>
+            </div>
+        </div>
+
+        <div class="image-section">
+            <div class="decorative-circle circle-1"></div>
+            <div class="decorative-circle circle-2"></div>
+            <div class="decorative-circle circle-3"></div>
+
+            <!-- Floating Badge -->
+            <div class="floating-badge badge-1">
+                <span class="badge-icon">🌟</span>
+                <span class="badge-text">Trusted</span>
+            </div>
+            <div class="floating-badge badge-2">
+                <span class="badge-icon">🔥</span>
+                <span class="badge-text">Popular</span>
+            </div>
+
+            <div class="mascot-bubble">
+                <img src="../assets/chick.png" alt="Quizzet Mascot" class="mascot">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/home.js"></script>
+</body>
+
+</html>

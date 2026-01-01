@@ -1,22 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Home</title>
-    <link rel="stylesheet" href="css/style.css"/>
-  </head>
-  <body>
-    <div class="container">
-      <div class="screen active" id="start-screen">
-        <h1>Quiz Time!</h1>
-        <p>Test your knowledge with these fun questions</p>
-        <button id="start-btn">Start Quiz!</button>
-      </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Quizzet</title>
+    <link rel="icon" type="image/png" href="assets/logoTab.png">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+      <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="#">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+<div class="dashboard-card hero-layout">
+    <div class="content-section centered">
+        <div class="badge">Finally, an exam tool that doesn't suck</div>
+
+        <div class="branding">
+            <h1>The Smartest Way to <br><span class="highlight">Ace Your Finals.</span></h1>
+            <p class="subtitle">Quizzet helps you create, practice, and pass without the 3:00 AM meltdowns. No stress, just results.</p>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Get instant results and feedback</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Smart Tracking</h3>
+                <p>Monitor your progress over time</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Secure</h3>
+                <p>Your data stays private always</p>
+            </div>
+        </div>
+
+        <!-- Live Stats Counter -->
+        <div class="hero-stats">
+            <div class="hero-stat-item">
+                <div class="hero-stat-number" data-target="5000">0</div>
+                <div class="hero-stat-label">Active Students</div>
+            </div>
+            <div class="hero-stat-item">
+                <div class="hero-stat-number" data-target="12000">0</div>
+                <div class="hero-stat-label">Quizzes Taken</div>
+            </div>
+            <div class="hero-stat-item">
+                <div class="hero-stat-number" data-target="98">0</div>
+                <div class="hero-stat-label">Satisfaction Rate</div>
+            </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="social-proof">
+            <div class="testimonial-badge">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <p>"Best quiz platform I've used!" - <strong>Sarah M.</strong></p>
+            </div>
+            <div class="testimonial-badge">
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <p>"Helped me ace my finals!" - <strong>Mike R.</strong></p>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-join" onclick="window.location.href='./pages/register.html'">
+                <span>Join the Genius Club</span>
+                <span class="btn-arrow">→</span>
+            </button>
+            <p class="signup-note">No credit card required • Free forever for students</p>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="trust-item">
+                <span class="trust-icon">✓</span>
+                <span>Student Friendly</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-icon">✓</span>
+                <span>No Ads</span>
+            </div>
+            <div class="trust-item">
+                <span class="trust-icon">✓</span>
+                <span>Always Free</span>
+            </div>
+        </div>
     </div>
-    <script src="js/script.js"></script>
-  </body>
+</div>
+    <script src="js/navbar.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
 </html>

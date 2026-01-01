@@ -7,9 +7,19 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>Quiz Game</title>
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/resultScreen.css"/>
   </head>
   <body>
+     <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="#">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
     <div class="container">
       <div id="result-screen" class="screen active">
           <h1>Quiz Results</h1>
@@ -17,9 +27,11 @@
             You scored <span id="final-score"> 0</span> out of <span id="max-score">5</span>
             <div id="result-message">Good job!</div>
         </div>
-        <button id="restart-btn">Restart Quiz</button>
+        <button id="restart-btn">Return Home</button>
+        <button id="dashboard-btn">See More Stats</button>
       </div>
     </div>
+    <script src="../js/navbar.js"></script>
     <script src="../js/script.js"></script>
   </body>
 </html>

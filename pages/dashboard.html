@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Quizzet</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <nav id="navbar">
+        <ul class="menu">
+            <li class="logo"><a href="#">Quizzet</a></li>
+            <li class="item"><a href="#">Dashboard</a></li>
+            <li class="item button"><a href="#">Log In</a></li>
+            <li class="item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><span class="bars"></span></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Welcome back, <span id="user-name" class="highlight">Student</span>! 👋</h1>
+            <p class="subtitle">Here is your performance summary.</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon-box">📝</div>
+                <div class="info-box">
+                    <h3>Quizzes Taken</h3>
+                    <p id="total-quizzes">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="icon-box">🎯</div>
+                <div class="info-box">
+                    <h3>Average Score</h3>
+                    <p id="avg-score">0%</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="icon-box">🏆</div>
+                <div class="info-box">
+                    <h3>Best Score</h3>
+                    <p id="high-score">-</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <div class="section-header">
+                <h2>Recent History</h2>
+                <button id="start-new-btn" class="btn-primary">Start New Quiz</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        </tbody>
+                </table>
+                <p id="no-data-msg">No quizzes taken yet. Time to start learning!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
