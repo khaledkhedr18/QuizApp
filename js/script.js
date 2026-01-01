@@ -44,6 +44,52 @@ const quizQuestions = [
       { text: 'Ag', correct: false },
     ],
   },
+  // --- New Questions Added Below ---
+  {
+    question: 'Who painted the Mona Lisa?',
+    answers: [
+      { text: 'Vincent van Gogh', correct: false },
+      { text: 'Pablo Picasso', correct: false },
+      { text: 'Leonardo da Vinci', correct: true },
+      { text: 'Claude Monet', correct: false },
+    ],
+  },
+  {
+    question: 'What is the smallest country in the world?',
+    answers: [
+      { text: 'Monaco', correct: false },
+      { text: 'Vatican City', correct: true },
+      { text: 'Malta', correct: false },
+      { text: 'San Marino', correct: false },
+    ],
+  },
+  {
+    question: 'Which element has the atomic number 1?',
+    answers: [
+      { text: 'Hydrogen', correct: true },
+      { text: 'Helium', correct: false },
+      { text: 'Oxygen', correct: false },
+      { text: 'Carbon', correct: false },
+    ],
+  },
+  {
+    question: 'How many continents are there on Earth?',
+    answers: [
+      { text: '5', correct: false },
+      { text: '6', correct: false },
+      { text: '7', correct: true },
+      { text: '8', correct: false },
+    ],
+  },
+  {
+    question: 'What is the hardest natural substance on Earth?',
+    answers: [
+      { text: 'Gold', correct: false },
+      { text: 'Iron', correct: false },
+      { text: 'Diamond', correct: true },
+      { text: 'Quartz', correct: false },
+    ],
+  },
 ];
 
 let state = {
