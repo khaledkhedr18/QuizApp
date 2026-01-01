@@ -325,6 +325,7 @@ function showResults() {
   const restartButton = document.getElementById('restart-btn');
   const savedScore = localStorage.getItem('mostRecentScore') || 0;
   const total = quizQuestions.length;
+  const dashboardBtn = document.getElementById('dashboard-btn');
 
   if (finalScoreSpan) finalScoreSpan.textContent = savedScore;
   if (maxScoreSpan) maxScoreSpan.textContent = total;
@@ -342,6 +343,11 @@ function showResults() {
   }
 
   if (restartButton) {
+    if (dashboardBtn) {
+      dashboardBtn.addEventListener('click', () => {
+        window.location.href = '../pages/dashboard.html';
+      });
+    }
     restartButton.addEventListener('click', () => {
       restartQuiz();
       localStorage.removeItem('mostRecentScore');
@@ -365,6 +371,26 @@ function finishExam() {
       finalScore++;
     }
   });
+
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  if (currentUser) {
+    const resultData = {
+      date: new Date().toLocaleDateString(),
+      score: finalScore,
+      total: quizQuestions.length,
+      percentage: Math.round((finalScore / quizQuestions.length) * 100),
+    };
+
+    const history =
+      JSON.parse(localStorage.getItem(`history_${currentUser.email}`)) || [];
+
+    history.push(resultData);
+    localStorage.setItem(
+      `history_${currentUser.email}`,
+      JSON.stringify(history),
+    );
+  }
 
   localStorage.setItem('mostRecentScore', finalScore);
   localStorage.removeItem(STORAGE_KEY);
