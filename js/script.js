@@ -17,6 +17,14 @@
   }
 })();
 
+(function () {
+  const page = window.location.pathname.split('/').pop();
+  if (page === 'quizscreen.html' && !localStorage.getItem('quizInProgress')) {
+    // If they try to type the URL manually without clicking 'Start'
+    window.location.href = 'home.html';
+  }
+})();
+
 const quizQuestions = [
   {
     question: 'What is the capital of France?',
@@ -195,9 +203,27 @@ function startTimer() {
 }
 
 function setupStartPage() {
+  // Populate dynamic content
+  const totalQuestionsDisplay = document.getElementById(
+    'total-questions-display',
+  );
+  if (totalQuestionsDisplay) {
+    totalQuestionsDisplay.textContent = `${quizQuestions.length} Questions`;
+  }
+
+  // Set current date
+  const quizDateElement = document.getElementById('quiz-date');
+  if (quizDateElement) {
+    const today = new Date();
+    const options = { month: 'short', day: 'numeric', year: 'numeric' };
+    quizDateElement.textContent = today.toLocaleDateString('en-US', options);
+  }
+
+  // Start button handler
   const startButton = document.getElementById('start-btn');
   if (startButton) {
     startButton.addEventListener('click', () => {
+      localStorage.setItem('quizInProgress', 'true');
       window.location.href = 'quizscreen.html';
     });
   }
@@ -376,10 +402,14 @@ function finishExam() {
 
   if (currentUser) {
     const resultData = {
-      date: new Date().toLocaleDateString(),
+      id: Date.now(),
+      date:
+        new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
       score: finalScore,
       total: quizQuestions.length,
       percentage: Math.round((finalScore / quizQuestions.length) * 100),
+      userAttempt: state.userAnswers,
+      questionsSnapshot: quizQuestions,
     };
 
     const history =
@@ -392,7 +422,8 @@ function finishExam() {
     );
   }
 
+  localStorage.removeItem('quizInProgress');
   localStorage.setItem('mostRecentScore', finalScore);
   localStorage.removeItem(STORAGE_KEY);
-  window.location.href = 'resultscreen.html';
+  window.location.replace('resultscreen.html');
 }

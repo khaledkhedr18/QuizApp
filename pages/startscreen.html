@@ -22,9 +22,73 @@
     </nav>
     <div class="container">
       <div class="screen active" id="start-screen">
-        <h1>Quiz Time!</h1>
-        <p>Test your knowledge with these fun questions</p>
-        <button id="start-btn">Start Quiz!</button>
+        <!-- Header Section -->
+        <div class="start-header">
+          <div class="quiz-badge">📝 Quiz Ready</div>
+          <h1>Ready to Test Your Knowledge?</h1>
+          <p class="subtitle">Challenge yourself with our interactive quiz</p>
+        </div>
+
+        <!-- Quiz Info Cards -->
+        <div class="quiz-info-grid">
+          <div class="info-card">
+            <div class="info-icon">📋</div>
+            <div class="info-content">
+              <h3>Questions</h3>
+              <p id="total-questions-display">10 Questions</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">⏱️</div>
+            <div class="info-content">
+              <h3>Duration</h3>
+              <p>60 Seconds</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🎯</div>
+            <div class="info-content">
+              <h3>Difficulty</h3>
+              <p>Medium</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📅</div>
+            <div class="info-content">
+              <h3>Date</h3>
+              <p id="quiz-date">Today</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instructions Section -->
+        <div class="instructions-section">
+          <h3>📖 Instructions</h3>
+          <ul class="instructions-list">
+            <li>✓ Answer all questions within the time limit</li>
+            <li>✓ You can flag questions for review</li>
+            <li>✓ Click submit when you're done</li>
+            <li>✓ Your progress will be saved automatically</li>
+          </ul>
+        </div>
+
+        <!-- Stats Preview -->
+        <div class="stats-preview">
+          <div class="stat-preview-item">
+            <span class="stat-icon">🏆</span>
+            <span class="stat-text">Pass Rate: <strong>85%</strong></span>
+          </div>
+          <div class="stat-preview-item">
+            <span class="stat-icon">⭐</span>
+            <span class="stat-text">Avg Score: <strong>7/10</strong></span>
+          </div>
+        </div>
+
+        <!-- Start Button -->
+        <button id="start-btn" class="start-quiz-btn">
+          <span>Start Quiz Now</span>
+          <span class="btn-arrow">→</span>
+        </button>
       </div>
     </div>
     <script src="../js/navbar.js"></script>

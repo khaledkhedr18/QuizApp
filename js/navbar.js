@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const signupBtn = document.querySelector('.item.button.secondary a');
   const toggleBtn = document.querySelector('.toggle');
   const logo = document.querySelector('.logo');
+  const dashboardLink = document.querySelector(
+    '.item:not(.button):not(.logo) a',
+  );
 
   toggleBtn.addEventListener('click', () => {
     menuItems.forEach((item) => {
@@ -18,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       window.location.href = '../pages/home.html';
     });
+
+    if (dashboardLink) {
+      dashboardLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '../pages/dashboard.html';
+      });
+    }
+
     if (loginBtn) {
       loginBtn.innerText = 'Logout';
       loginBtn.addEventListener('click', (e) => {
@@ -35,6 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       window.location.href = '../index.html';
     });
+
+    if (dashboardLink) {
+      dashboardLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '../pages/login.html';
+      });
+    }
 
     if (loginBtn) {
       loginBtn.addEventListener('click', (e) => {

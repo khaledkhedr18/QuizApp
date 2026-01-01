@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Capitalize first letter just in case
   displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
-  console.log(displayName);
-  console.log(currentUser.username);
 
   document.getElementById('user-name').textContent = displayName;
   // -----------------------------
@@ -87,10 +85,18 @@ function populateTable(history) {
     const displayTotal = record.total || record.toatl || '?';
 
     row.innerHTML = `
-            <td>${record.date}</td>
-            <td><span class="highlight">${record.score}/${displayTotal}</span> (${record.percentage}%)</td>
-            <td><span class="status-badge ${statusClass}">${statusText}</span></td>
-        `;
+        <td>${record.date}</td>
+        <td><span class="highlight">${record.score}/${displayTotal}</span> (${record.percentage}%)</td>
+        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+        <td>
+            <button class="btn-review" onclick="viewReview(${record.id})">Review</button>
+        </td>
+    `;
     tbody.appendChild(row);
   });
+}
+
+function viewReview(attemptId) {
+  localStorage.setItem('reviewAttemptId', attemptId);
+  window.location.href = 'review.html';
 }

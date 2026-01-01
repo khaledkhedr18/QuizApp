@@ -6,9 +6,15 @@
 }
  */
 nav {
-  background: var(--color-surface); 
+  background: var(--color-surface);
   padding: 3px 20px;
   box-shadow: 0 2px 10px var(--shadow-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 ul {
@@ -98,8 +104,12 @@ a:hover {
   width: 100%;
 }
 
-.bars:before { top: 7px; }
-.bars:after { top: -7px; }
+.bars:before {
+  top: 7px;
+}
+.bars:after {
+  top: -7px;
+}
 
 /* Tablet menu */
 @media all and (min-width: 468px) {
