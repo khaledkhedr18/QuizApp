@@ -245,16 +245,21 @@ function showQuestion() {
   const progressBar = document.getElementById('progress');
   const flagBtn = document.getElementById('flag-btn');
   const submitBtn = document.getElementById('submit-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
 
   if (!questionText || !answersContainer) return;
 
   const currentQuestion = quizQuestions[state.currentIndex];
-  const progressPercent = (state.currentIndex / quizQuestions.length) * 100;
+  const progressPercent =
+    ((state.currentIndex + 1) / quizQuestions.length) * 100;
 
+  // question + progress
   currentQuestionSpan.textContent = state.currentIndex + 1;
   progressBar.style.width = progressPercent + '%';
   questionText.textContent = currentQuestion.question;
 
+  // flag state
   if (state.flaggedIndices.includes(state.currentIndex)) {
     flagBtn.classList.add('active-flag');
     flagBtn.textContent = 'Unflag';
@@ -263,6 +268,7 @@ function showQuestion() {
     flagBtn.textContent = 'Flag';
   }
 
+  // answers
   answersContainer.innerHTML = '';
   currentQuestion.answers.forEach((answer, index) => {
     const button = document.createElement('button');
@@ -277,18 +283,24 @@ function showQuestion() {
     answersContainer.appendChild(button);
   });
 
-  document.getElementById('prev-btn').style.visibility =
+  // prev button
+  prevBtn.style.visibility =
     state.currentIndex === 0 ? 'hidden' : 'visible';
 
-  if (state.currentIndex === quizQuestions.length - 1) {
-    document.getElementById('next-btn').style.display = 'none';
-    submitBtn.style.display = 'block';
+  // SUBMIT ALWAYS VISIBLE
+  submitBtn.style.display = 'block';
 
-    const allAnswered = state.userAnswers.every((answer) => answer !== null);
-    submitBtn.disabled = !allAnswered;
+  // enable submit only if all answered
+  const allAnswered = state.userAnswers.every(
+    (answer) => answer !== null,
+  );
+  submitBtn.disabled = !allAnswered;
+
+  // next button logic
+  if (state.currentIndex === quizQuestions.length - 1) {
+    nextBtn.style.display = 'none';
   } else {
-    document.getElementById('next-btn').style.display = 'block';
-    submitBtn.style.display = 'none';
+    nextBtn.style.display = 'block';
   }
 }
 
